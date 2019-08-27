@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Телефон{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Телефон</h1>
+        </div>
+        <div class="content">
+            <table width="400">
+                <thead>
+                    <tr>
+                        <td> Модель: </td>
+                        <th> {{phone.name}} </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Цена: </td>
+                        <td> {{phone.price}} руб. </td>
+                    </tr>
+                    <tr>
+                        <td> Дата релиза: </td>
+                        <td> {{phone.release_date}} </td>
+                    </tr>
+                    <tr>
+                        <td> Технология 4G (LTE): </td>
+                        {% if phone.lte_exists == True %}
+                            <td> Есть </td>
+                        {% else %}
+                            <td> Нет </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+        </div>
+        <div class="sort-block">
+            Сортировать по:
+            <ul>
+                <li>
+                    <a href="?sort=name"> названию </a>
+                </li>
+                <li>
+                    <a href="?sort=min_price"> возрастанию стоимости </a>
+                </li>
+                <li>
+                    <a href="?sort=max_price"> убыванию стоимости </a>
+                </li>
+            </ul>
+        <div class="content">
+            <table width="800">
+                <thead>
+                    <tr>
+                         {% for phone in phones %}
+                        <th>
+                            <center>
+                                <a href="{{phone.slug}}" >{{phone.name}}  </a>
+                            </center>
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                         {% for phone in phones %}
+                        <th>
+                            <center>
+                                Стоимость: {{ phone.price }}руб.
+                            </center>
+                        </th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                         {% for phone in phones %}
+                        <td>
+                            <center>
+                                <img src="{{ phone.image }}" width="120" height="230">
+                            </center>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
